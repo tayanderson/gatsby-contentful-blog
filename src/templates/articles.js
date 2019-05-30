@@ -9,10 +9,11 @@ import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 
-const ArticlesIndex = ({ data, pageContext }) => {
+const ArticleIndex = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
+  const featuredPost = posts[0].node
   const { currentPage } = pageContext
-   const isFirstPage = currentPage === 1
+  const isFirstPage = currentPage === 1
 
   return (
     <Layout>
@@ -34,11 +35,9 @@ const ArticlesIndex = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query {
     allContentfulPost(
       sort: { fields: [publishDate], order: DESC }
-      limit: $limit
-      skip: $skip
       filter: {postType: {eq: "article"}}
     ) {
       edges {
@@ -66,4 +65,4 @@ export const query = graphql`
   }
 `
 
-export default ArticlesIndex
+export default ArticleIndex

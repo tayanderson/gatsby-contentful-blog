@@ -11,8 +11,9 @@ import config from '../utils/siteConfig'
 
 const RecipeIndex = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
+  const featuredPost = posts[0].node
   const { currentPage } = pageContext
-   const isFirstPage = currentPage === 1
+  const isFirstPage = currentPage === 1
 
   return (
     <Layout>
@@ -34,11 +35,9 @@ const RecipeIndex = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query {
     allContentfulPost(
       sort: { fields: [publishDate], order: DESC }
-      limit: $limit
-      skip: $skip
       filter: {postType: {eq: "recipe"}}
     ) {
       edges {

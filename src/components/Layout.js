@@ -7,11 +7,17 @@ import theme from '../styles/theme'
 import config from '../utils/siteConfig'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
+import '../styles/style.scss'
+import Navbar from '../components/Navbar'
 
 const Template = ({ children }) => {
   return (
     <div className="siteRoot">
-      <Helmet>
+      <Helmet
+        bodyAttributes={{
+        class: 'has-navbar-fixed-top'
+        }}
+        >
         <title>{config.siteTitle}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,7 +27,7 @@ const Template = ({ children }) => {
       <ThemeProvider theme={theme}>
         <>
           <div className="siteContent">
-            <Menu />
+            <Navbar />
             {children}
           </div>
           <Footer />

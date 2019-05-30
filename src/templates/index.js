@@ -8,7 +8,7 @@ import Container from '../components/Container'
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
-import Hero2 from '../components/Hero2'
+import Hero from '../components/Hero2'
 
 const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
@@ -24,7 +24,7 @@ const Index = ({ data, pageContext }) => {
           <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
         </Helmet>
       )}
-      <Hero2 title={featuredPost.title} image={featuredPost.heroImage} height={'80vh'} date={featuredPost.publishDate} />
+      <Hero title={featuredPost.title} image={featuredPost.heroImage} height={'80vh'} date={featuredPost.publishDate} {...featuredPost} />
 
       <Container>
           <CardList>

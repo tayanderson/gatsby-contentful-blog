@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import TagList from '../components/TagList'
 
 const Post = styled.li`
   position: relative;
@@ -16,21 +17,23 @@ const Post = styled.li`
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
-  &:hover {
-    background: ${props => props.theme.colors.tertiary};
-  }
   a {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-    width: 100%;
     color: ${props => props.theme.colors.base};
     text-decoration: none;
     .gatsby-image-wrapper {
       height: 0;
       padding-bottom: 60%;
+      overflow: hidden;
       @media screen and (min-width: ${props => props.theme.responsive.small}) {
         padding-bottom: ${props => (props.featured ? '40%' : '60%')};
+      }
+      img {
+        transition: all .3s ease !important;
+      }
+      &:hover img {
+        transform: scale(1.02);
+        -webkit-filter: brightness(110%); /* Safari 6.0 - 9.0 */
+        filter: brightness(110%);
       }
     }
   }
@@ -48,11 +51,6 @@ const Date = styled.h3`
   color: gray;
 `
 
-const ReadingTime = styled.h4`
-  margin: 0 0 1.5rem 0;
-  color: gray;
-`
-
 const Excerpt = styled.p`
   margin: 0 0 1rem 0;
   line-height: 1.6;
@@ -63,6 +61,7 @@ const Card = ({
   heroImage,
   title,
   publishDate,
+  tags,
   body,
   body: {
     childMarkdownRemark: { timeToRead },
@@ -73,15 +72,16 @@ const Card = ({
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
+      </Link>
+      <Link to={`/${slug}/`}>
         <Title>{title}</Title>
-        <Date>{publishDate}</Date>
-        <ReadingTime>{timeToRead} min read</ReadingTime>
+      </Link>
         <Excerpt
           dangerouslySetInnerHTML={{
             __html: body.childMarkdownRemark.excerpt,
           }}
         />
-      </Link>
+      <Date>{publishDate}</Date>
     </Post>
   )
 }

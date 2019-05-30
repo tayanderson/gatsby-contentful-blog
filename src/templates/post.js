@@ -44,10 +44,9 @@ const PostTemplate = ({ data, pageContext }) => {
 
       <Hero image={heroImage} height={'80vh'} />
 
-      <Container>        
+      <Container>
         <PageBody body={body} />
       </Container>
-      <PostLinks previous={previous} next={next} />
     </Layout>
   )
 }

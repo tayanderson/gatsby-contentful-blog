@@ -1,48 +1,31 @@
-   import React from 'react'
-import Img from 'gatsby-image'
+// /components/Hero.js
+
+import React from 'react'
+import BgImg from 'gatsby-background-image'
 import styled from 'styled-components'
 
-const Wrapper = styled.section`
-  position: relative;
-  min-height: 300px;
-`
-const BgImg = styled(Img)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: -1;
-  min-height: 300px;
-  height: auto;
-  @media (min-width: ${props => props.theme.responsive.small}) {
-    height: ${props => props.height || 'auto'};
-  }
-  & > img {
-    object-fit: ${props => props.fit || 'cover'} !important;
-    object-position: ${props => props.position || '50% 50%'} !important;
-  }
-  &::before {
-    content: '';
-    background: rgba(0, 0, 0, 0.25);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-  }
-`
+const Hero = props => (
+    <BgImg Tag="section"
+      className="hero is-medium home-hero"
+      fluid={props.image.fluid}
+       >
+       <div className="hero-body">
+         <Date>Posted {props.date}</Date>
+         <Title>{props.title}</Title>
+         <Excerpt
+           dangerouslySetInnerHTML={{
+             __html: props.body.childMarkdownRemark.excerpt,
+           }}
+         />
+       </div>
+     </BgImg>
+);
 
-const Content = styled.div`
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
+const StyledHero = styled(Hero)`
   width: 100%;
-
+  background-position: bottom center;
+  background-repeat: repeat-y;
+  background-size: cover;
 `
 
 const Title = styled.h1`
@@ -60,18 +43,9 @@ const Date = styled.p`
   color: white;
 `
 
-const Hero = props => (
-  <Wrapper>
-    <BgImg
-      height={props.height}
-      fluid={props.image.fluid}
-      backgroundColor={'#eeeeee'}
-    />
-    <Content>
-      <Date>Posted {props.date}</Date>
-      <Title>{props.title}</Title>
-    </Content>
-  </Wrapper>
-)
+const Excerpt = styled.p`
+  text-align: center;
+  color: white
+`
 
-export default Hero
+export default StyledHero
