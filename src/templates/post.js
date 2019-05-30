@@ -10,6 +10,16 @@ import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 import SEO from '../components/SEO'
+import Disqus from 'gatsby-plugin-disqus'
+import styled from 'styled-components'
+import RelatedPosts from '../components/RelatedPosts'
+
+
+const DisqusWrapper = styled.div`
+  margin: 0 auto;
+  max-width: ${props => props.theme.sizes.maxWidthCentered};
+  padding-top: 3rem;
+`
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -19,11 +29,15 @@ const PostTemplate = ({ data, pageContext }) => {
     body,
     publishDate,
     tags,
+    metaDescription,
   } = data.contentfulPost
   const postNode = data.contentfulPost
 
   const previous = pageContext.prev
   const next = pageContext.next
+
+  const relatedPosts = pageContext.relatedPosts
+
 
   return (
     <Layout>
@@ -32,20 +46,28 @@ const PostTemplate = ({ data, pageContext }) => {
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
 
-      <Container>
-      <PostDetails
-          title={title}
-          date={publishDate}
-          timeToRead={body.childMarkdownRemark.timeToRead}
-          tags={tags}
-        />
-
-      </Container>
+      <section className="section">
+        <PostDetails
+            title={title}
+            date={publishDate}
+            timeToRead={body.childMarkdownRemark.timeToRead}
+            tags={tags}
+            description={metaDescription}
+          />
+      </section>
 
       <Hero image={heroImage} height={'80vh'} />
 
       <Container>
-        <PageBody body={body} />
+        <PageBody className="content" body={body} />
+        <DisqusWrapper>
+          <Disqus
+            identifier={slug}
+            title={title}
+            url={`${config.siteUrl}${slug}`}
+          />
+        </DisqusWrapper>
+        <RelatedPosts posts={relatedPosts} />
       </Container>
     </Layout>
   )
@@ -81,9 +103,7 @@ export const query = graphql`
       }
       body {
         childMarkdownRemark {
-          timeToRead
           html
-          excerpt(pruneLength: 320)
         }
       }
     }

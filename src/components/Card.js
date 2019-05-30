@@ -62,10 +62,7 @@ const Card = ({
   title,
   publishDate,
   tags,
-  body,
-  body: {
-    childMarkdownRemark: { timeToRead },
-  },
+  metaDescription,
   ...props
 }) => {
   return (
@@ -76,11 +73,7 @@ const Card = ({
       <Link to={`/${slug}/`}>
         <Title>{title}</Title>
       </Link>
-        <Excerpt
-          dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.excerpt,
-          }}
-        />
+      <Excerpt>{metaDescription.internal.content}</Excerpt>
       <Date>{publishDate}</Date>
     </Post>
   )

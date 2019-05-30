@@ -8,6 +8,7 @@ import Container from '../components/Container'
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
+import PageTitle from '../components/PageTitle'
 
 const ArticleIndex = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
@@ -24,6 +25,7 @@ const ArticleIndex = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
+        <PageTitle small>Articles</PageTitle>
           <CardList>
             {posts.map(({ node: post }) => (
               <Card key={post.id} {...post} />
@@ -45,18 +47,16 @@ export const query = graphql`
           title
           id
           slug
+          metaDescription {
+            internal {
+              content
+            }
+          }
           publishDate(formatString: "MMMM DD, YYYY")
           heroImage {
             title
             fluid(maxWidth: 1800) {
               ...GatsbyContentfulFluid_withWebp_noBase64
-            }
-          }
-          body {
-            childMarkdownRemark {
-              timeToRead
-              html
-              excerpt(pruneLength: 80)
             }
           }
         }

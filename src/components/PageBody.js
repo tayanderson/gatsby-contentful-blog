@@ -8,21 +8,14 @@ const Body = styled.div`
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  h5 {
     font-weight: 600;
     line-height: 1.25;
     margin: 0 0 1rem 0;
     text-transform: capitalize;
-  }
-
-  h1 {
-    font-size: 1.5em;
-  }
-  h2 {
-    font-size: 1.25em;
-  }
-  h3 {
-    font-size: 1em;
+    margin-top: 2em !important;
   }
 
   p {
@@ -37,7 +30,7 @@ const Body = styled.div`
       color: ${props => props.theme.colors.highlight};
     }
   }
-
+  
   del {
     text-decoration: line-through;
   }
@@ -101,6 +94,7 @@ const PageBody = props => {
   return (
     <Body
       dangerouslySetInnerHTML={{ __html: props.body.childMarkdownRemark.html }}
+      className="content"
     />
   )
 }

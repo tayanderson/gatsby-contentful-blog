@@ -1,6 +1,7 @@
 const config = require('./src/utils/siteConfig')
 let contentfulConfig
 
+
 try {
   contentfulConfig = require('./.contentful')
 } catch (e) {
@@ -51,7 +52,6 @@ module.exports = {
             resolve: `gatsby-remark-images-contentful`,
             options: {
               maxWidth: 650,
-              backgroundColor: 'white',
               linkImagesToOriginal: false,
             },
           },
@@ -164,5 +164,20 @@ module.exports = {
     },
     'gatsby-plugin-netlify',
     'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `dash-of-shambles`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Work Sans\:300,400,500`,
+          `Montserrat\:400,700,800` // you can also specify font weights and styles
+        ]
+      }
+    }
   ],
 }

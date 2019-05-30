@@ -12,11 +12,7 @@ const Hero = props => (
        <div className="hero-body">
          <Date>Posted {props.date}</Date>
          <Title>{props.title}</Title>
-         <Excerpt
-           dangerouslySetInnerHTML={{
-             __html: props.body.childMarkdownRemark.excerpt,
-           }}
-         />
+         <Excerpt>{props.metaDescription.internal.content}</Excerpt>
        </div>
      </BgImg>
 );

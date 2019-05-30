@@ -78,6 +78,11 @@ export const query = graphql`
         id
         title
         slug
+        metaDescription {
+          internal {
+            content
+          }
+        }
         publishDate(formatString: "MMMM DD, YYYY")
         publishDateISO: publishDate(formatString: "YYYY-MM-DD")
         heroImage {
@@ -88,9 +93,7 @@ export const query = graphql`
         }
         body {
           childMarkdownRemark {
-            timeToRead
             html
-            excerpt(pruneLength: 80)
           }
         }
       }

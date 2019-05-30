@@ -1,5 +1,7 @@
 const config = require('./src/utils/siteConfig')
 const path = require(`path`)
+const _ = require('lodash')
+
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -15,6 +17,11 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               slug
               publishDate
+              tags {
+                title
+                id
+                slug
+              }
             }
           }
         }
@@ -37,20 +44,6 @@ exports.createPages = ({ graphql, actions }) => {
           numPages: numPages + 1,
           currentPage: 1,
         },
-      })
-
-      // Create additional pagination on home page if needed
-      Array.from({ length: numPages }).forEach((_, i) => {
-        createPage({
-          path: `/${i + 2}/`,
-          component: path.resolve(`./src/templates/index.js`),
-          context: {
-            limit: postsPerPage,
-            skip: i * postsPerPage + postsPerFirstPage,
-            numPages: numPages + 1,
-            currentPage: i + 2,
-          },
-        })
       })
 
       // Create recipes index page
@@ -76,6 +69,43 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
 
+      const sortByDateDescending = (a, b) => {
+       const aPubDateInMS = (new Date(a.publishedOn)).getTime();
+       const bPubDateInMS = (new Date(b.publishedOn)).getTime();
+
+       if (aPubDateInMS > bPubDateInMS) {
+         return 1
+       }
+
+       if (aPubDateInMS < bPubDateInMS) {
+         return -1
+       }
+
+       return 0
+     }
+
+
+      const getRelatedPosts = (currentPost, posts) => {
+          const MINIMUM_CATEGORIES_IN_COMMON = 1
+
+          const hasAtLeastOneCategoryInCommon = ({ node }) => {
+            // stop working if we're looking at the same article
+            if (currentPost.id === node.id) {
+              return false
+            }
+            const commonCategories = _.intersectionBy(currentPost.tags, node.tags,"slug")
+            console.log(commonCategories);
+            return commonCategories.length >= MINIMUM_CATEGORIES_IN_COMMON
+          }
+
+          const filteredResults = posts.filter(hasAtLeastOneCategoryInCommon)
+          console.log(filteredResults);
+          if (filteredResults.length > 5) {
+            return filteredResults.sort(sortByDateDescending).slice(0, 5)
+          }
+          return filteredResults
+        }
+
       // Create each individual post
       posts.forEach((edge, i) => {
         const prev = i === 0 ? null : posts[i - 1].node
@@ -87,6 +117,7 @@ exports.createPages = ({ graphql, actions }) => {
             slug: edge.node.slug,
             prev,
             next,
+            relatedPosts: getRelatedPosts(edge.node, result.data.allContentfulPost.edges),
           },
         })
       })
