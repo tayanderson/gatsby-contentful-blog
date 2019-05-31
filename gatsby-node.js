@@ -28,6 +28,8 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(result => {
       const posts = result.data.allContentfulPost.edges
+      const postsPerFirstPage = config.postsPerHomePage
+      const postsPerPage = config.postsPerPage
       const numPages = Math.ceil(
         posts.slice(postsPerFirstPage).length / postsPerPage
       )
@@ -37,6 +39,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/`,
         component: path.resolve(`./src/templates/index.js`),
         context: {
+          skip: 0,
           numPages: numPages + 1,
           currentPage: 1,
         },
@@ -47,6 +50,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/recipes/`,
         component: path.resolve(`./src/templates/recipes.js`),
         context: {
+          skip: 0,
           numPages: numPages + 1,
           currentPage: 1,
         },
@@ -58,6 +62,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/articles/`,
         component: path.resolve(`./src/templates/articles.js`),
         context: {
+          skip: 0,
           numPages: numPages + 1,
           currentPage: 1,
         },
