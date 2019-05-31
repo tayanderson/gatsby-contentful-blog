@@ -1,6 +1,5 @@
 module.exports = {
   siteTitle: 'Drink Designer',
-  siteTitleAlt: 'GCN Gatsby Starter', // This allows an alternative site title for SEO schema.
   siteDescription:
     'A collection of cocktails recipes, home bar tips and everything else booze related by Taylor Anderson.',
   siteUrl: 'https://thedrinkdesigner.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
@@ -8,7 +7,6 @@ module.exports = {
   postsPerPage: 6, // Number of posts shown on paginated pages
   author: 'Taylor Anderson', // Author for RSS author segment and SEO schema
   authorUrl: 'https://thedrinkdesigner.com/about/', // URL used for author and publisher schema, can be a social profile or other personal site
-  userTwitter: '@twitter', // Change for Twitter Cards
   shortTitle: 'Drink Designer', // Used for App manifest e.g. Mobile Home Screen
   shareImage: '/logos/share.jpg', // Open Graph Default Share Image. 1200x1200 is recommended
   shareImageWidth: 900, // Change to the width of your default share image

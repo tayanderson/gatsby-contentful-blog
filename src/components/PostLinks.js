@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
-  margin: -2em 0 0 0;
+  margin: 3em 0 0 0;
   padding: 0 1.5em 2em;
 `
 
@@ -16,12 +16,13 @@ const Box = styled.div`
   a {
     background: ${props => props.theme.colors.base};
     color: white;
-    padding: 1em;
+    padding: .5em 1em;
     border-radius: 2px;
     text-decoration: none;
     transition: 0.2s;
     &:hover {
       background: ${props => props.theme.colors.highlight};
+      color: white;
     }
   }
 `

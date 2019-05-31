@@ -10,9 +10,9 @@ import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 import SEO from '../components/SEO'
-import Disqus from 'gatsby-plugin-disqus'
 import styled from 'styled-components'
 import RelatedPosts from '../components/RelatedPosts'
+import { DiscussionEmbed } from 'disqus-react'
 
 
 const DisqusWrapper = styled.div`
@@ -38,6 +38,11 @@ const PostTemplate = ({ data, pageContext }) => {
 
   const relatedPosts = pageContext.relatedPosts
 
+  const disqusConfig = {
+   shortname: 'dash-of-shambles',
+   config: { identifier: slug, title },
+  }
+
 
   return (
     <Layout>
@@ -60,12 +65,9 @@ const PostTemplate = ({ data, pageContext }) => {
 
       <Container>
         <PageBody className="content" body={body} />
+        <PostLinks previous={previous} next={next} />
         <DisqusWrapper>
-          <Disqus
-            identifier={slug}
-            title={title}
-            url={`${config.siteUrl}${slug}`}
-          />
+          <DiscussionEmbed {...disqusConfig} />
         </DisqusWrapper>
         <RelatedPosts posts={relatedPosts} />
       </Container>
