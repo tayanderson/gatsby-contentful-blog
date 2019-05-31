@@ -69,7 +69,6 @@ const PostTemplate = ({ data, pageContext }) => {
         <DisqusWrapper>
           <DiscussionEmbed {...disqusConfig} />
         </DisqusWrapper>
-        <RelatedPosts posts={relatedPosts} />
       </Container>
     </Layout>
   )
