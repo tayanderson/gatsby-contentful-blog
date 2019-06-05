@@ -12,9 +12,13 @@ const List = styled.ul`
 const Tag = styled.li`
   display: inline-block;
   margin: 0 0.25em 0.25em 0;
+  border: 2px solid ${props => props.theme.colors.base};
+  padding: 3px 10px;
+  font-weight: 500;
   a {
+    text-decoration: none;
     float: left;
-    text-transform: capitalize;
+    text-transform: uppercase;
     color: ${props => props.theme.colors.base};
   }
 `

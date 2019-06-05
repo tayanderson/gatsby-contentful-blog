@@ -14,11 +14,11 @@ const Date = styled.p`
 
 const PostDetails = props => {
   return (
-    <Wrapper>
+    <Wrapper className="has-text-centered">
       {props.tags && <TagList tags={props.tags} />}
       <h3 className="title is-3 is-spaced">{props.title}</h3>
-      <p className="subtitle is-5">{props.description.internal.content}</p>
-      <Date>Posted {props.date}</Date>
+      <p className="subtitle is-6">{props.description.internal.content}</p>
+      <Date className="subtitle is-6">~ Posted {props.date} ~</Date>
 
     </Wrapper>
   )

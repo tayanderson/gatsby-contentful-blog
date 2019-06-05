@@ -3,21 +3,24 @@
 import React from 'react'
 import BgImg from 'gatsby-background-image'
 import styled from 'styled-components'
+import {Link} from 'gatsby'
 
-const Hero = props => (
+const FeaturedHero = props => (
     <BgImg Tag="section"
-      className="hero is-medium home-hero"
+      className="hero is-medium featured-hero"
       fluid={props.image.fluid}
        >
-       <div className="hero-body">
-         <Date>Posted {props.date}</Date>
-         <Title>{props.title}</Title>
+       <div className="hero-body has-text-centered">
+         <Link to={props.slug} className="featured-hero-link">
+           <Title>{props.title}</Title>
+         </Link>
          <Excerpt>{props.metaDescription.internal.content}</Excerpt>
+         <Link to={props.slug} className="button is-outlined is-uppercase is-white no-text-decoration">Check it out</Link>
        </div>
      </BgImg>
 );
 
-const StyledHero = styled(Hero)`
+const StyledHero = styled(FeaturedHero)`
   width: 100%;
   background-position: bottom center;
   background-repeat: repeat-y;
@@ -32,11 +35,6 @@ const Title = styled.h1`
   text-align: center;
   color: white;
   margin: 2rem 0;
-`
-
-const Date = styled.p`
-  text-align:center;
-  color: white;
 `
 
 const Excerpt = styled.p`

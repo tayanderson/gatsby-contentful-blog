@@ -36,8 +36,6 @@ const PostTemplate = ({ data, pageContext }) => {
   const previous = pageContext.prev
   const next = pageContext.next
 
-  const relatedPosts = pageContext.relatedPosts
-
   const disqusConfig = {
    shortname: 'dash-of-shambles',
    config: { identifier: slug, title },
@@ -94,7 +92,7 @@ export const query = graphql`
       heroImage {
         title
         fluid(maxWidth: 1800) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
+          ...GatsbyContentfulFluid_withWebp
         }
         ogimg: resize(width: 1800) {
           src

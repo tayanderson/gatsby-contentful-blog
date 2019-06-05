@@ -77,7 +77,7 @@ const Email = styled.input`
 
 const Message = styled.textarea`
   width: 100%;
-  margin: 0 0 1em 0;
+  margin: 0 0 3em 0;
   line-height: 1.6;
   min-height: 250px;
   resize: vertical;
@@ -88,6 +88,7 @@ const Submit = styled.input`
   color: white !important;
   cursor: pointer;
   transition: 0.2s;
+  margin: 0 auto;
   &:hover {
     background: ${props => props.theme.colors.highlight} !important;
   }
@@ -234,7 +235,7 @@ class ContactForm extends React.Component {
           onChange={this.handleInputChange}
           required
         />
-        <Submit name="submit" type="submit" value="Send" />
+      <Submit name="submit" type="submit" value="Send Message" />
 
         <Modal visible={this.state.showModal}>
           <p>

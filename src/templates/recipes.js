@@ -1,14 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import CardList from '../components/CardList'
-import Card from '../components/Card'
 import Helmet from 'react-helmet'
 import Container from '../components/Container'
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 import PageTitle from '../components/PageTitle'
+import MasonryGrid from '../components/MasonryGrid'
 
 
 const RecipeIndex = ({ data, pageContext }) => {
@@ -27,11 +26,7 @@ const RecipeIndex = ({ data, pageContext }) => {
       )}
       <Container>
         <PageTitle small>Recipes</PageTitle>
-          <CardList>
-            {posts.map(({ node: post }) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </CardList>
+          <MasonryGrid posts={posts} />
       </Container>
     </Layout>
   )
@@ -52,12 +47,13 @@ export const query = graphql`
             internal {
               content
             }
+            metaDescription
           }
           publishDate(formatString: "MMMM DD, YYYY")
           heroImage {
             title
             fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

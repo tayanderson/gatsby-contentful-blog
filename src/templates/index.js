@@ -1,20 +1,26 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import CardList from '../components/CardList'
-import Card from '../components/Card'
 import Helmet from 'react-helmet'
 import Container from '../components/Container'
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
-import Hero from '../components/Hero2'
+import FeaturedHero from '../components/FeaturedHero'
+import MasonryGrid from '../components/MasonryGrid'
 
 const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
   const featuredPost = posts[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
+
+  const breakpointCols = {
+    default: 3,
+    1100: 2,
+    700: 1,
+    500: 1
+  };
 
   return (
     <Layout>
@@ -25,14 +31,12 @@ const Index = ({ data, pageContext }) => {
         </Helmet>
       )}
 
-      <Hero title={featuredPost.title} image={featuredPost.heroImage} height={'80vh'} date={featuredPost.publishDate} {...featuredPost} />
+      <FeaturedHero title={featuredPost.title} image={featuredPost.heroImage} height={'80vh'} {...featuredPost} />
 
       <Container>
-          <CardList>
-            {posts.map(({ node: post }) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </CardList>
+
+          <MasonryGrid posts={posts} />
+
       </Container>
     </Layout>
   )
@@ -52,13 +56,14 @@ export const query = graphql`
           heroImage {
             title
             fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           metaDescription {
             internal {
               content
             }
+            metaDescription
           }
           body {
             childMarkdownRemark {

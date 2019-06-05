@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
-  margin: 3em 0 0 0;
+  margin: 4rem 0 0 0;
   padding: 0 1.5em 2em;
 `
 

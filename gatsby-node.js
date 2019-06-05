@@ -22,6 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
                 id
                 slug
               }
+              title
             }
           }
         }
@@ -97,9 +98,9 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           const filteredResults = posts.filter(hasAtLeastOneCategoryInCommon)
-          // if (filteredResults.length > 5) {
-          //   return filteredResults.slice(0, 5)
-          // }
+          if (filteredResults.length > 5) {
+             return filteredResults.sort(sortByDateDescending).slice(0, 5)
+           }
           return filteredResults
         }
 

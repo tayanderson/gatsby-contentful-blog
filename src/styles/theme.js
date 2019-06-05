@@ -1,9 +1,9 @@
 const theme = {
   colors: {
-    base: '#d9665b', // Black
-    secondary: '#090d26', // Medium Gray
-    tertiary: '#f3f3f3', // Light Gray
-    highlight: '#4D628C', // Light Blue
+    base: '#d9665b',
+    secondary: '#090d26',
+    tertiary: '#f3f3f3',
+    highlight: '#4D628C',
   },
   sizes: {
     maxWidth: '1800px',
