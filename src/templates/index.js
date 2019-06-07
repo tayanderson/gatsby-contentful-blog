@@ -34,9 +34,7 @@ const Index = ({ data, pageContext }) => {
       <FeaturedHero title={featuredPost.title} image={featuredPost.heroImage} height={'80vh'} {...featuredPost} />
 
       <Container>
-
           <MasonryGrid posts={posts} />
-
       </Container>
     </Layout>
   )

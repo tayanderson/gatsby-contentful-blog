@@ -118,7 +118,10 @@ class SEO extends Component {
     }
 
     return (
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang:'en',
+        }}>
         {/* General tags */}
         <meta name="image" content={image} />
         <meta name="description" content={description} />
