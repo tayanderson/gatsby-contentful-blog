@@ -15,7 +15,7 @@ const Footer = () => {
 		                </Link>
 		            </div>
 		            <p className="site-footer__copyright is-size-7">
-		                &copy; {config.siteTitle}  All Rights Reserved • <Link to="/privacy-policy/">Privacy Policy</Link> • Site built by <a href="https://tayanderson.com" target="_blank" rel="noopener noreferrer">Taylor Anderson</a>
+		                &copy; 2019 {config.siteTitle} All Rights Reserved • <Link to="/privacy-policy/">Privacy Policy</Link> • Site built by <a href="https://tayanderson.com" target="_blank" rel="noopener noreferrer">Taylor Anderson</a>
 		            </p>
 		        </div>
 		    </div>
