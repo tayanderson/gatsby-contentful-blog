@@ -107,7 +107,6 @@ module.exports = {
       options: {
         fonts: [
           `Work Sans\:300,400,500`,
-          `Montserrat\:400,500,600,700,800`,
           `Roboto Slab\:300,400,700`
         ]
       }
