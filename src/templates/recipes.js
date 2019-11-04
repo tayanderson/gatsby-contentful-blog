@@ -25,7 +25,7 @@ const RecipeIndex = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        <PageTitle small>Recipes</PageTitle>
+        <PageTitle small>Cocktails</PageTitle>
           <MasonryGrid posts={posts} />
       </Container>
     </Layout>

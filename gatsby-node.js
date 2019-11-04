@@ -48,7 +48,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       // Create recipes index page
       createPage({
-        path: `/recipes/`,
+        path: `/cocktails/`,
         component: path.resolve(`./src/templates/recipes.js`),
         context: {
           skip: 0,
