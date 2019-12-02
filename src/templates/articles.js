@@ -24,7 +24,7 @@ const ArticleIndex = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        <PageTitle small>Articles</PageTitle>
+        <PageTitle>Articles</PageTitle>
           <MasonryGrid posts={posts} />
       </Container>
     </Layout>
@@ -53,6 +53,12 @@ export const query = graphql`
             title
             fluid(maxWidth: 1800) {
               ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          body {
+            childMarkdownRemark {
+              html
+              excerpt
             }
           }
         }

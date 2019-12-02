@@ -1,56 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'gatsby'
-
-const Wrapper = styled.div`
-  margin: 4rem 0 0 0;
-  padding: 0 1.5em 2em;
-`
-
-const Box = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 100%;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-  a {
-    background: ${props => props.theme.colors.base};
-    color: white;
-    padding: .5em 1em;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: 0.2s;
-    &:hover {
-      background: ${props => props.theme.colors.highlight};
-      color: white;
-    }
-  }
-`
-
-const PreviousLink = styled(Link)`
-  margin-right: auto;
-  order: 1;
-`
-
-const NextLink = styled(Link)`
-  margin-left: auto;
-  order: 2;
-`
 
 const PostLinks = props => {
   return (
-    <Wrapper>
-      <Box>
+    <div className="mt-16 px-1 pb-4 post-links">
+      <div className="flex justify-between my-0 mx-auto w-full max-w-centered">
         {props.previous && (
-          <PreviousLink to={`/${props.previous.slug}/`}>
+          <Link to={`/${props.previous.slug}/`} className="text-primary transition-ease transition-250">
             &#8592; Prev Post
-          </PreviousLink>
+          </Link>
         )}
         {props.next && (
-          <NextLink to={`/${props.next.slug}/`}>Next Post &#8594;</NextLink>
+          <Link to={`/${props.next.slug}/`} className="text-primary transition-ease transition-250">Next Post &#8594;</Link>
         )}
-      </Box>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
 

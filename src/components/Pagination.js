@@ -1,49 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'gatsby'
-
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin: -2em auto 0;
-  width: 100%;
-  max-width: ${props => props.theme.sizes.maxWidth};
-  padding: 0 1.5em 2em;
-  a {
-    background: ${props => props.theme.colors.base};
-    color: white;
-    padding: 1em;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: 0.2s;
-    &:hover {
-      background: ${props => props.theme.colors.highlight};
-    }
-  }
-`
-
-const PreviousLink = styled(Link)`
-  margin-right: auto;
-  order: 1;
-`
-
-const NextLink = styled(Link)`
-  margin-left: auto;
-  order: 3;
-`
-
-const PageIndicator = styled.span`
-  color: gray;
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  text-align: center;
-  padding: 1em 1.5em;
-  z-index: -1;
-  opacity: 0.7;
-`
 
 class Pagination extends React.Component {
   render() {
@@ -60,17 +16,17 @@ class Pagination extends React.Component {
     const nextPageLink = isLast ? null : `${pathPrefix}/${nextPageNum}/`
 
     return (
-      <Wrapper>
+      <div className="relative flex justify-between w-full max-w-centered -mt-2 mx-auto mb-0 pt-0 px-2 pb-2">
         {!isFirst && (
-          <PreviousLink to={prevPageLink}>&#8592; Prev Page</PreviousLink>
+          <Link to={prevPageLink} className="bg-primary text-white rounded p-1 hover:bg-secondary mr-auto order-1">&#8592; Prev Page</Link>
         )}
         {!isNotPaginated && (
-          <PageIndicator>
+          <span className="text-grey absolute left-0 right-0 w-full text-center py-1 px-2 -z-10 opacity-75">
             {currentPage}/{numPages}
-          </PageIndicator>
+          </span>
         )}
-        {!isLast && <NextLink to={nextPageLink}>Next Page &#8594;</NextLink>}
-      </Wrapper>
+        {!isLast && <Link to={nextPageLink} className="bg-primary text-white rounded p-1 hover:bg-secondary ml-auto order-3">Next Page &#8594;</Link>}
+      </div>
     )
   }
 }

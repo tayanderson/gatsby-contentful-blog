@@ -3,24 +3,13 @@ import styled from 'styled-components'
 import TagList from '../components/TagList'
 
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  text-align:center;
-`
-
-const Date = styled.p`
-  text-align:center;
-`
-
 const PostDetails = props => {
   return (
-    <Wrapper className="has-text-centered">
+    <div className="m-auto mb-12 mt-6">
       {props.tags && <TagList tags={props.tags} />}
-      <h3 className="title is-3 is-spaced">{props.title}</h3>
-      <p className="subtitle is-6">{props.description.internal.content}</p>
-      <Date className="subtitle is-6">~ Posted {props.date} ~</Date>
-
-    </Wrapper>
+      <h2 className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl xl:text-5xl capitalize mb-5 text-center">{props.title}</h2>
+      <p className="font-body text-center text-sm text-gray-600">- Posted {props.date} -</p>
+    </div>
   )
 }
 

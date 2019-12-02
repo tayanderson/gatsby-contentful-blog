@@ -9,33 +9,24 @@ import styled from 'styled-components'
 */
 
 const Form = styled.form`
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-  margin: 0 auto;
-  display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: flex-start;
   input,
   textarea {
-    font-family: inherit;
-    font-size: inherit;
-    border: none;
-    outline: none;
-    background: ${props => props.theme.colors.tertiary};
-    color: ${props => props.theme.colors.base};
-    border-radius: 2px;
     padding: 1em;
+    &::placeholder {
+      color: black;
+    }
     &::-webkit-input-placeholder {
-      color: gray;
+      color: black;
     }
     &::-moz-placeholder {
-      color: gray;
+      color: black;
     }
     &:-ms-input-placeholder {
-      color: gray;
+      color: black;
     }
     &:-moz-placeholder {
-      color: gray;
+      color: black;
     }
     &:required {
       box-shadow: none;
@@ -59,74 +50,34 @@ const Form = styled.form`
   }
 `
 
-const Name = styled.input`
-  margin: 0 0 1em 0;
-  width: 100%;
-  @media (min-width: ${props => props.theme.responsive.small}) {
-    width: 49%;
-  }
-`
-
-const Email = styled.input`
-  margin: 0 0 1em 0;
-  width: 100%;
-  @media (min-width: ${props => props.theme.responsive.small}) {
-    width: 49%;
-  }
-`
-
 const Message = styled.textarea`
-  width: 100%;
-  margin: 0 0 3em 0;
-  line-height: 1.6;
-  min-height: 250px;
-  resize: vertical;
+  min-height: 200px;
 `
 
 const Submit = styled.input`
-  background: ${props => props.theme.colors.base} !important;
-  color: white !important;
-  cursor: pointer;
   transition: 0.2s;
-  margin: 0 auto;
-  &:hover {
-    background: ${props => props.theme.colors.highlight} !important;
-  }
 `
 
 const Modal = styled.div`
-  background: white;
   padding: 2em;
-  border-radius: 2px;
-  position: fixed;
   min-width: 75%;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
-  margin: 0 auto;
-  z-index: 99;
-  display: flex;
   flex-flow: column;
-  align-items: flex-start;
   transition: 0.2s all;
   opacity: ${props => (props.visible ? '1' : '0')};
   visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+  @media screen and (min-width: 640px) {
     min-width: inherit;
     max-width: 400px;
-  }
-  p {
-    line-height: 1.6;
-    margin: 0 0 2em 0;
   }
 `
 
 const Button = styled.div`
-  background: ${props => props.theme.colors.base};
+  background: transparent;
   font-size: 1em;
   display: inline-block;
   margin: 0 auto;
-  border: none;
+  border: 1px solid #ff001f;
   outline: none;
   cursor: pointer;
   color: white;
@@ -134,13 +85,6 @@ const Button = styled.div`
   border-radius: 2px;
   text-decoration: none;
   transition: 0.2s;
-  z-index: 99;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    background: ${props => props.theme.colors.highlight};
-  }
 `
 
 const encode = data => {
@@ -202,8 +146,9 @@ class ContactForm extends React.Component {
         data-netlify-honeypot="bot"
         overlay={this.state.showModal}
         onClick={this.closeModal}
+        className="max-w-centered my-0 mx-auto flex flex-wrap justify-between items-start font-body"
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value="contact" className="bg-pink text-primary border-2 p-2"/>
         <p hidden>
           <label>
             Don’t fill this out:{' '}
@@ -211,38 +156,40 @@ class ContactForm extends React.Component {
           </label>
         </p>
 
-        <Name
+        <input
           name="name"
           type="text"
           placeholder="Full Name"
           value={this.state.name}
           onChange={this.handleInputChange}
           required
+          className="mb-3 w-full bg-pink"
         />
-        <Email
+      <input
           name="email"
           type="email"
           placeholder="Email"
           value={this.state.email}
           onChange={this.handleInputChange}
           required
+          className="mb-3 w-full bg-pink"
         />
-        <Message
+      <Message
           name="message"
           type="text"
           placeholder="Message"
           value={this.state.message}
           onChange={this.handleInputChange}
           required
+          className="w-full mb-10 leading-relaxed resize-y bg-pink"
         />
-      <Submit name="submit" type="submit" value="Send Message" />
+      <Submit name="submit" type="submit" value="Send Message" className="bg-transparent text-primary border-2 border-primary cursor-pointer my-0 mx-auto hover:bg-primary hover:text-white"/>
 
-        <Modal visible={this.state.showModal}>
-          <p>
-            Thank you for reaching out. I will get back to you as soon as
-            possible.
+        <Modal visible={this.state.showModal} className="bg-white p-8 fixed top-1/2 left-1/2 mx-auto my-0 z-50 items-start sm:max-w-sm">
+          <p className="leading-relaxed mb-6 text-center">
+            Thanks for reaching out! I will get back to you as soon as I can.
           </p>
-          <Button onClick={this.closeModal}>Okay</Button>
+          <div className="bg-transparent border-2 border-primary text-primary text-base block my-0 mx-auto cursor-pointer p-2 z-50 focus:outline-none hover:bg-primary hover:text-white w-20 text-center" onClick={this.closeModal}>Okay</div>
         </Modal>
       </Form>
     )

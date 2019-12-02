@@ -1,8 +1,57 @@
 import React from 'react'
-import styled from 'styled-components'
 import Masonry from 'react-masonry-css'
 import Img from 'gatsby-image'
 import {Link} from 'gatsby'
+import styled from 'styled-components'
+
+const GridItem = styled.div`
+  .post-link {
+    line-height: 1;
+    padding-left: 38px;
+    transition: transform .6s cubic-bezier(.19,1,.22,1);
+    @media (min-width: 51.875em) {
+      padding-left: 46px;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: #C70505;
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 28px;
+      transition: transform .6s cubic-bezier(.19,1,.22,1);
+      transform-origin: 100% center;
+      @media (min-width: 51.875em) {
+          top: 7px;
+          width: 36px;
+      }
+    }
+  }
+  a:hover {
+    h3,p:not(.post-link) {color: #C70505; transition: color .3s ease;}
+    .post-link {
+      transform: translateX(36px);
+      &:after {
+        transform: scaleX(2);
+      }
+    }
+    img {
+      transform: scale(1.02);
+      -webkit-filter: brightness(110%); /* Safari 6.0 - 9.0 */
+      filter: brightness(110%);
+    }
+  }
+
+  .gatsby-image-wrapper {
+    @apply overflow-hidden;
+    img {
+      transition: all .3s ease !important;
+    }
+  }
+`
 
 
 const MasonryGrid = ({posts}) => {
@@ -16,22 +65,20 @@ const MasonryGrid = ({posts}) => {
   return (
     <Masonry
       breakpointCols={breakpointCols}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column">
+      className="flex -ml-8 w-auto"
+      columnClassName="pl-8">
       {posts.map(({ node: post }) => (
-        <div className="masonry-grid-item">
+        <GridItem className="mb-12 masonry-grid-item">
           <Link to={`/${post.slug}/`}>
             <Img
               fluid={post.heroImage.fluid}
             />
+            <p className="font-body font-medium uppercase text-gray-600 mt-6 mb-2 text-sm">{post.publishDate}</p>
+            <h3 className="font-heading text-black text-3xl font-semibold mb-2">{post.title}</h3>
+            <p className="font-body text-gray-700 pb-4">{post.body.childMarkdownRemark.excerpt}</p>
+            <p className="post-link font-body text-sm tracking-wide uppercase font-semibold text-primary relative inline-block">Read More</p>
           </Link>
-          <div className="text-wrap">
-            <Link to={`/${post.slug}/`}>
-              <h4 className="title is-4 is-spaced">{post.title}</h4>
-            </Link>
-            <p className="subtitle is-6 is-spaced">{post.metaDescription.metaDescription}</p>
-          </div>
-        </div>
+        </GridItem>
       ))}
     </Masonry>
   )

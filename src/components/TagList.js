@@ -1,37 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'gatsby'
-
-const List = styled.ul`
-  width: 100%;
-  margin: 0 auto 1em auto;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-  text-align:center;
-`
-
-const Tag = styled.li`
-  display: inline-block;
-  margin: 0 0.25em 0.25em 0;
-  border: 2px solid ${props => props.theme.colors.base};
-  padding: 3px 10px;
-  font-weight: 500;
-  a {
-    text-decoration: none;
-    float: left;
-    text-transform: uppercase;
-    color: ${props => props.theme.colors.base};
-  }
-`
 
 const TagList = props => {
   return (
-    <List>
+    <ul className="w-full mx-auto mb-5 max-w-centered text-center">
       {props.tags.map(tag => (
-        <Tag key={tag.id}>
-          <Link to={`/tag/${tag.slug}/`}>{tag.title}</Link>
-        </Tag>
+        <li key={tag.id} className="inline-block border-2 border-solid border-primary py-1 px-5 font-medium">
+          <Link to={`/tag/${tag.slug}/`} className="float-left uppercase text-primary">{tag.title}</Link>
+        </li>
       ))}
-    </List>
+    </ul>
   )
 }
 

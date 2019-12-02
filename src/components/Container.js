@@ -1,16 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
-
-const Wrapper = styled.section`
-  margin: 0 auto auto;
-  width: 100%;
-  max-width: ${props => props.theme.sizes.maxWidth};
-  padding: 3em 1.5em 6em;
-  flex-grow: 1;
-`
 
 const Container = props => {
-  return <Wrapper>{props.children}</Wrapper>
+  return <div className="container mx-auto max-w-full flex-grow pt-8 px-8 pb-16">{props.children}</div>
 }
 
 export default Container

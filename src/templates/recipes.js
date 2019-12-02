@@ -25,7 +25,7 @@ const RecipeIndex = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        <PageTitle small>Cocktails</PageTitle>
+        <PageTitle>Cocktail Recipes</PageTitle>
           <MasonryGrid posts={posts} />
       </Container>
     </Layout>
@@ -54,6 +54,12 @@ export const query = graphql`
             title
             fluid(maxWidth: 1800) {
               ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          body {
+            childMarkdownRemark {
+              html
+              excerpt
             }
           }
         }

@@ -1,94 +1,78 @@
-import React from 'react';
+import React, { useState } from "react";
 import { FaInstagram } from 'react-icons/fa';
-import siteLogo from '../images/dd-logo2.png';
-import { Link } from 'gatsby';
+import siteLogo from '../images/logo1.png';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import config from '../utils/siteConfig'
+import Headroom from 'react-headroom';
 
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
-    }
-  }
+function Navbar() {
+  const [isExpanded, toggleExpansion] = useState(false);
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
-    )
-  }
+  return (
+    <Headroom>
+    <header className="bg-white w-full z-10 border-b border-grey">
+      <div className="flex flex-wrap items-center justify-between mx-auto p-4 px-8 md:py-6 md:px-8">
+        <Link className="flex items-center no-underline" to="/">
+          <img src={siteLogo} alt={`${config.siteTitle}`} style={{ width: '200px' }} />
+        </Link>
 
-  render() {
-    return (
-      <nav
-        className="navbar is-fixed-top is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={siteLogo} alt="Drink Designer" style={{ width: '200px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
+        <button
+          className="block md:hidden border border-white flex items-center py-2 rounded text-black"
+          onClick={() => toggleExpansion(!isExpanded)}
+        >
+          <svg
+            className="fill-current h-6 w-6"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div className="navbar-start">
-              <Link className="navbar-item" to="/cocktails">
-                Cocktails
-              </Link>
-              <Link className="navbar-item" to="/articles">
-                Articles
-              </Link>
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-            </div>
-            <div className="navbar-end">
-              <a
-                className="navbar-item"
-                href="https://instagram.com/thedrinkdesigner"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon is-medium">
-                  <FaInstagram size="2em" />
-                </span>
-              </a>
-            </div>
-        </div>
-      </nav>
-    )
-  }
-}
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
 
+        <nav
+          className={`${
+            isExpanded ? `block` : `hidden`
+          } md:block md:flex md:items-center w-full md:w-auto`}
+        >
+          {[
+            {
+              route: `/cocktails`,
+              title: `Cocktails`
+            },
+            {
+              route: `/articles`,
+              title: `Articles`
+            },
+            {
+              route: `/about`,
+              title: `About`
+            },
+            {
+              route: `/contact`,
+              title: `Contact`
+            }
+          ].map(link => (
+            <Link
+              className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-medium uppercase hover:text-primary transition-colors transition-ease transition-250 tracking-wider text-sm text-gray-800"
+              key={link.title}
+              to={link.route}
+              activeClassName="active"
+            >
+              {link.title}
+            </Link>
+          ))}
+          <a
+            className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-medium uppercase hover:text-primary transition-colors transition-ease transition-250 tracking-wider text-sm text-gray-800"
+            href="https://instagram.com/thedrinkdesigner"
+          >
+            Instagram
+          </a>
+        </nav>
+      </div>
+    </header>
+  </Headroom>
+  );
+}
 
 export default Navbar;

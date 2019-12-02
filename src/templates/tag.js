@@ -66,21 +66,19 @@ const TagTemplate = ({ data, pageContext }) => {
 
         <Masonry
           breakpointCols={breakpointCols}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column">
+          className="flex -ml-8 w-auto"
+          columnClassName="pl-8">
           {posts.slice(skip, limit * currentPage).map(post => (
-            <div className="masonry-grid-item">
+            <div className="mb-12 masonry-grid-item">
               <Link to={`/${post.slug}/`}>
                 <Img
                   fluid={post.heroImage.fluid}
                 />
               </Link>
-              <div className="text-wrap">
-                <Link to={`/${post.slug}/`}>
-                  <h4 className="title is-4 is-spaced">{post.title}</h4>
-                </Link>
-                <p className="subtitle is-6 is-spaced">{post.metaDescription.metaDescription}</p>
-              </div>
+              <Link to={`/${post.slug}/`} className="hover:text-primary hover:underline">
+                <h4 className="font-heading text-black text-2xl font-semibold mt-6 mb-5">{post.title}</h4>
+              </Link>
+              <p className="font-body">{post.body.childMarkdownRemark.excerpt}</p>
             </div>
           ))}
         </Masonry>
@@ -117,6 +115,7 @@ export const query = graphql`
         body {
           childMarkdownRemark {
             html
+            excerpt
           }
         }
       }

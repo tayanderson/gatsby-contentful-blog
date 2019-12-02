@@ -10,16 +10,9 @@ import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 import SEO from '../components/SEO'
-import styled from 'styled-components'
 import RelatedPosts from '../components/RelatedPosts'
 import { DiscussionEmbed } from 'disqus-react'
 
-
-const DisqusWrapper = styled.div`
-  margin: 0 auto;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-  padding-top: 3rem;
-`
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -49,24 +42,18 @@ const PostTemplate = ({ data, pageContext }) => {
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
 
-      <section className="section">
+      <Container>
         <PostDetails
             title={title}
             date={publishDate}
             timeToRead={body.childMarkdownRemark.timeToRead}
             tags={tags}
             description={metaDescription}
-          />
-      </section>
+        />
+        <Hero image={heroImage} />
 
-      <Hero image={heroImage} height={'80vh'} />
-
-      <Container>
-        <PageBody className="content" body={body} />
+        <PageBody body={body} />
         <PostLinks previous={previous} next={next} />
-        <DisqusWrapper>
-          <DiscussionEmbed {...disqusConfig} />
-        </DisqusWrapper>
       </Container>
     </Layout>
   )
@@ -103,6 +90,7 @@ export const query = graphql`
       body {
         childMarkdownRemark {
           html
+          excerpt
         }
       }
     }

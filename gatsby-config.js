@@ -95,7 +95,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify',
-    'gatsby-plugin-sass',
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
@@ -107,9 +106,19 @@ module.exports = {
       options: {
         fonts: [
           `Work Sans\:300,400,500`,
-          `Roboto Slab\:300,400,700`
+          `Roboto Slab\:300,400,700`,
+          `Cairo\:300,400,600,700`,
         ]
       }
-    }
+    },
+    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `thedrinkdesigner`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`
   ],
 }
