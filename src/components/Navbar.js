@@ -54,7 +54,7 @@ function Navbar() {
             }
           ].map(link => (
             <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-medium uppercase hover:text-primary transition-colors transition-ease transition-250 tracking-wider text-sm text-gray-800"
+              className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-semibold uppercase hover:text-primary transition-colors transition-ease transition-250 text-sm text-black"
               key={link.title}
               to={link.route}
               activeClassName="active"
@@ -63,7 +63,7 @@ function Navbar() {
             </Link>
           ))}
           <a
-            className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-medium uppercase hover:text-primary transition-colors transition-ease transition-250 tracking-wider text-sm text-gray-800"
+            className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-semibold uppercase hover:text-primary transition-colors transition-ease transition-250 tracking-wider text-sm text-black"
             href="https://instagram.com/thedrinkdesigner"
           >
             Instagram

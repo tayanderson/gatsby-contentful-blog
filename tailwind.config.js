@@ -3,8 +3,8 @@ module.exports = {
     important: true,
     extend: {
       fontFamily: {
-        heading: ['Cairo', 'sans-serif'],
-        body: ['Work Sans', 'sans-serif'],
+        heading: ['Rubik', 'sans-serif'],
+        body: ['Nunito', 'sans-serif'],
       },
       colors: {
         primary: '#C70505',
