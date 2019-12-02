@@ -18,9 +18,6 @@ module.exports = {
     require(`cssnano`)({
       preset: `default`
     }),
-    require(`precss`),
-    ...process.env.NODE_ENV === 'production'
-          ? [purgecss]
-          : []
+    require(`precss`)
   ]
 };
