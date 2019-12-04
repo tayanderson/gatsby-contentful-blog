@@ -79,3 +79,8 @@
 .gatsby-resp-image-wrapper {
   @apply min-w-full my-8;
 }
+
+.masonry-grid-item .img-wrapper {
+  height: 450px;
+  width: 100%;
+}

@@ -72,6 +72,7 @@ const MasonryGrid = ({posts}) => {
           <Link to={`/${post.slug}/`}>
             <Img
               fluid={post.heroImage.fluid}
+              className='img-wrapper'
             />
             <p className="font-body font-medium uppercase text-gray-600 mt-6 mb-2 text-sm">{post.publishDate}</p>
             <h3 className="font-heading text-black text-3xl font-semibold mb-2">{post.title}</h3>
