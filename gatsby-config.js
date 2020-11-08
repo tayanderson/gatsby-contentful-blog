@@ -109,13 +109,27 @@ module.exports = {
           `Rubik\:300,400,500,700,900`,
           `Nunito\:300,400,600,700`,
         ]
-      }
+      },
     },
-    `gatsby-plugin-postcss`,
     {
-      resolve: `gatsby-source-instagram`,
+      resolve: `gatsby-plugin-postcss`,
+        options: {
+          postCssPlugins: [
+            require(`tailwindcss`),
+            require('precss'),
+            require(`autoprefixer`),
+            ...(process.env.NODE_ENV === `production`
+              ? [require(`cssnano`)]
+              : []),
+          ]
+        }
+      },
+    {
+    resolve: `gatsby-source-instagram`,
       options: {
         username: `thedrinkdesigner`,
+        access_token: "IGQVJYeERyZAHZAZAckdoY28wRk9VOGRueFV6OEc5c0Jicm5xS2FlT3hrUzMtc0xHdVl3YWRSeDRiQWRCNDVLWDVWMG9vYTJncmVCZAzlfWDVtMl9ibW1YNWxOVV93SEZABdXpPOUhPaWlHcDJsLW9Xa1h1SwZDZD",
+        instagram_id: "7472849241",
       },
     },
     `gatsby-plugin-sharp`,

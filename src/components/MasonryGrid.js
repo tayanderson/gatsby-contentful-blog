@@ -17,7 +17,7 @@ const GridItem = styled.div`
       content: "";
       display: block;
       height: 2px;
-      background: #C70505;
+      background: #A53333;
       position: absolute;
       top: 5px;
       left: 0;
@@ -31,7 +31,7 @@ const GridItem = styled.div`
     }
   }
   a:hover {
-    h3,p:not(.post-link) {color: #C70505; transition: color .3s ease;}
+    h3,p:not(.post-link) {color: #A53333; transition: color .3s ease;}
     .post-link {
       transform: translateX(36px);
       &:after {
@@ -74,9 +74,8 @@ const MasonryGrid = ({posts}) => {
               fluid={post.heroImage.fluid}
               className='img-wrapper'
             />
-            <p className="font-body font-medium uppercase text-gray-600 mt-6 mb-2 text-sm">{post.publishDate}</p>
-            <h3 className="font-heading text-black text-3xl font-semibold mb-2">{post.title}</h3>
-            <p className="font-body text-gray-700 pb-4">{post.body.childMarkdownRemark.excerpt}</p>
+            <p className="font-body font-medium uppercase mt-6 mb-2 text-sm">{post.publishDate}</p>
+            <h3 className="font-heading text-2xl font-semibold mb-2">{post.title}</h3>
             <p className="post-link font-body text-sm tracking-wide uppercase font-semibold text-primary relative inline-block">Read More</p>
           </Link>
         </GridItem>

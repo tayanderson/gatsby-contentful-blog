@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ["./src/**/*.js"],
   theme: {
     important: true,
     extend: {
@@ -7,12 +8,17 @@ module.exports = {
         body: ['Nunito', 'sans-serif'],
       },
       colors: {
-        primary: '#C70505',
-        secondary:'#0D0D0D',
-        highlight: '#F24C3D',
-        grey: '#D9D9D9',
+        primary: '#A53333',
+        secondary:'#3D3D3D',
+        highlight: '#BF5656',
+        grey: '#E6E8E6',
         darkgrey: '#595959',
-        pink: '#FFF4EE'
+        pink: '#eaddd3',
+        cream: {
+          default: '#FCF7F0',
+          light: '#FFFFF7',
+          lighter: '#FFFFFA'
+        },
       },
       minHeight: {
         '0': '0',

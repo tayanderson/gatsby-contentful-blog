@@ -190,5 +190,33 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadTags, loadPages])
+  const loadPages2Columns = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulPage2Columns {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+    `).then(result => {
+      const pages = result.data.allContentfulPage2Columns.edges
+      pages.map(({ node }) => {
+        createPage({
+          path: `${node.slug}/`,
+          component: path.resolve(`./src/templates/page-2-columns.js`),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
+
+
+  return Promise.all([loadPosts, loadTags, loadPages, loadPages2Columns])
 }

@@ -6,7 +6,7 @@ import Container from '../components/Container'
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
-import FeaturedHero from '../components/FeaturedHero'
+import FeaturedHero from '../components/FeaturedHero1'
 import MasonryGrid from '../components/MasonryGrid'
 import InstaGrid from '../components/InstaGrid'
 
@@ -37,19 +37,19 @@ const Index = ({ data, pageContext }) => {
 
       <FeaturedHero title={featuredPost.title} image={featuredPost.heroImage} {...featuredPost} />
       <Container>
-          <h2 className="font-heading text-2xl font-semibold mt-8 mb-6">Lastest Cocktails</h2>
+          <h2 className="font-heading text-3xl font-semibold mt-8 mb-6">Lastest Cocktails</h2>
           <MasonryGrid posts={posts} />
           {/*<Link to="/cocktails" className="font-body font-semibold text-center lowercase underline text-2xl block hover:text-primary">View More</Link>*/}
       </Container>
-        <div className="bg-pink w-full">
-          <Container>
-            <h2 className="font-heading text-2xl font-semibold mt-12 mb-6">Homebartending Basics</h2>
-            <MasonryGrid posts={articles} />
-            {/*<Link to="/articles" className="font-body font-semibold text-center lowercase underline text-2xl block hover:text-primary">View More</Link>*/}
-          </Container>
-        </div>
+      <div className="bg-cream">
+        <Container>
+          <h2 className="font-heading text-3xl font-semibold mt-12 mb-6">Homebartending Basics</h2>
+          <MasonryGrid posts={articles} />
+          {/*<Link to="/articles" className="font-body font-semibold text-center lowercase underline text-2xl block hover:text-primary">View More</Link>*/}
+        </Container>
+      </div>
       <Container>
-        <h2 className="font-heading text-2xl font-semibold mt-12 mb-6"><a href="https://www.instagram.com/thedrinkdesigner/" className="hover:text-primary">On the &apos;Gram</a></h2>
+        <h2 className="font-heading text-3xl font-semibold mt-12 mb-6"><a href="https://www.instagram.com/thedrinkdesigner/" className="hover:text-primary">On the &apos;Gram</a></h2>
         <InstaGrid posts={instaPosts} />
       </Container>
     </Layout>
@@ -153,14 +153,16 @@ export const query = graphql`
         }
       }
     }
-    insta: allInstaNode (sort: {fields: timestamp, order: DESC}, limit: 6) {
+    insta:allInstaNode(
+      sort: {fields: timestamp, order: DESC}
+      limit: 6
+    ) {
       edges {
         node {
-          id
           localFile {
             childImageSharp {
-              fluid(maxWidth: 256) {
-                ...GatsbyImageSharpFluid
+              fluid (maxWidth:600){
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
