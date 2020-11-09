@@ -153,13 +153,12 @@ export const query = graphql`
         }
       }
     }
-    insta:allInstaNode(
-      sort: {fields: timestamp, order: DESC}
+    insta:allInstagramContent(
       limit: 6
     ) {
       edges {
         node {
-          localFile {
+          localImage {
             childImageSharp {
               fluid (maxWidth:600){
                 ...GatsbyImageSharpFluid_withWebp
