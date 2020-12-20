@@ -17,11 +17,12 @@ const StyledHero = styled.div`
     top:0;
     left:0;
     z-index:-10;
-    background-color: rgba(57, 5, 5,.6);
+    background-color: rgba(57, 5, 5,.5);
     transition: all .3s ease;
   }
   .hero-body:hover:after {
     background-color: rgba(57, 5, 5,.3);
+    filter: brightness(110%);
   }
   .featured-hero button {
     transition: all 0.2s ease;

@@ -7,7 +7,7 @@ body {
 }
 
 .pg-body {
-  
+
   @apply font-body;
 
   h1 {
@@ -80,7 +80,7 @@ body {
   }
 }
 
-.active {@apply text-primary; }
+.active {@apply text-primary font-semibold; }
 
 .gatsby-resp-image-wrapper {
   @apply min-w-full my-8;
