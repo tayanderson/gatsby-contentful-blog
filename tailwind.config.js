@@ -4,7 +4,7 @@ module.exports = {
     important: true,
     extend: {
       fontFamily: {
-        heading: ['Rubik', 'sans-serif'],
+        heading: ['Ubuntu', 'sans-serif'],
         body: ['Nunito', 'sans-serif'],
       },
       colors: {

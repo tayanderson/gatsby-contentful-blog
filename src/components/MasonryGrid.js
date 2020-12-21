@@ -74,7 +74,7 @@ const MasonryGrid = ({posts}) => {
               fluid={post.heroImage.fluid}
               className='img-wrapper'
             />
-            <p className="font-body font-medium uppercase mt-6 mb-2 text-sm">{post.publishDate}</p>
+          <p className="font-body font-normal uppercase mt-6 mb-2 text-sm tracking-wide text-gray-700">{post.publishDate}</p>
             <h3 className="font-heading text-2xl font-semibold mb-2">{post.title}</h3>
             <p className="post-link font-body text-sm tracking-wide uppercase font-semibold text-primary relative inline-block">Read More</p>
           </Link>

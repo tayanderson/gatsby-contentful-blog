@@ -26,7 +26,7 @@ const InstaGrid = ({posts}) => {
     default: 3,
     1100: 3,
     700: 2,
-    500: 2
+    500: 1
   };
 
   return (

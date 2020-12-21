@@ -10,8 +10,8 @@ function Navbar() {
 
   return (
     <Headroom>
-    <header className="bg-cream-light w-full z-10 border-b border-primary">
-      <div className="flex flex-wrap items-center justify-between mx-auto p-4 px-8 md:py-6 md:px-8 container mx-auto">
+    <header className="bg-white w-full z-10">
+      <div className="flex flex-wrap items-center justify-between p-4 px-8 md:py-6 md:px-8 container mx-auto">
         <Link className="flex items-center no-underline" to="/">
           <img src={siteLogo} alt={`${config.siteTitle}`} style={{ width: '200px' }} />
         </Link>
@@ -54,7 +54,7 @@ function Navbar() {
             }
           ].map(link => (
             <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body hover:text-highlight transition-colors transition-ease transition-250 text-lg text-primary"
+              className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-heading hover:border-black border-transparent border-b-2 transition-colors transition-ease transition-250 text-sm text-black font-semibold tracking-wide uppercase"
               key={link.title}
               to={link.route}
               activeClassName="active"
@@ -63,7 +63,7 @@ function Navbar() {
             </Link>
           ))}
           <a
-            className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-body font-semibold hover:text-white hover:bg-primary transition-colors transition-ease transition-250 tracking-wider text-lg text-primary border-2 border-primary p-2"
+            className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline font-heading font-semibold transition-colors transition-ease transition-250 tracking-wider text-sm text-black border-2 border-black py-2 px-4 uppercase hover:bg-black hover:text-white tracking-wide"
             href="https://instagram.com/thedrinkdesigner"
           >
             Instagram

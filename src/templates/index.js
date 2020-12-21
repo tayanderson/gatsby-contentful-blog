@@ -41,7 +41,7 @@ const Index = ({ data, pageContext }) => {
           <MasonryGrid posts={posts} />
           {/*<Link to="/cocktails" className="font-body font-semibold text-center lowercase underline text-2xl block hover:text-primary">View More</Link>*/}
       </Container>
-      <div className="bg-cream">
+      <div className="bg-gray-100">
         <Container>
           <h2 className="font-heading text-3xl font-semibold mt-12 mb-6">Homebartending Basics</h2>
           <MasonryGrid posts={articles} />

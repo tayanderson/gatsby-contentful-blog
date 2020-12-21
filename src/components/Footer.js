@@ -2,20 +2,19 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Link } from 'gatsby';
 import config from '../utils/siteConfig';
-import { FaInstagram } from 'react-icons/fa';
-import { FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-			<footer className="px-8 bg-gray-900">
-		    <div className="pt-10 pb-8 flex flex-row justify-between items-center text-cream font-body text-base md:text-lg">
-          <div className="flex flex-col sm:flex-row">
-            <span className="capitalize mr-12">&copy; {new Date().getFullYear()} {config.siteTitle}</span>
-            <Link to="/privacy-policy/">Terms & Privacy Policy</Link>
+			<footer className="bg-white">
+		    <div className="container mx-auto p-4 px-8 md:py-6 md:px-8">
+          <div className="text-gray-500 font-body text-base md:text-sm flex flex-col md:flex-row justify-between items-center">
+            <span className="capitalize">&copy; {new Date().getFullYear()} {config.siteTitle}</span>
+            <div className="text-center">
+              <Link to="/privacy-policy/" className="hover:text-black">Terms & Privacy Policy. </Link>
+              <span className="whitespace-pre">Site by <a href="https://tayanderson.com" target="_blank" rel="noopener noreferrer" className="hover:text-black">Taylor Anderson.</a></span>
+            </div>
           </div>
-          <a href="https://instagram.com/thedrinkdesigner"><FaInstagram size="2em"/></a>
-		    </div>
-        <div className="border-t border-cream py-6 text-cream text-sm">Website Design & Development by <a href="https://tayanderson.com" target="_blank" rel="noopener noreferrer" className="underline">Taylor Anderson</a></div>
+        </div>
 		</footer>
 	)
 }

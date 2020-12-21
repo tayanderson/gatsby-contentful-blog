@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-cream-light;
+  @apply bg-white;
 }
 
 .pg-body {
@@ -55,7 +55,7 @@ body {
 
   ul {
     li {
-      @apply list-disc list-inside leading-tight;
+      @apply list-disc list-inside leading-relaxed;
       &:last-child {@apply m-0;}
     }
   }
@@ -80,7 +80,9 @@ body {
   }
 }
 
-.active {@apply text-primary font-semibold; }
+.active {
+  @apply border-b-2 border-black;
+}
 
 .gatsby-resp-image-wrapper {
   @apply min-w-full my-8;
