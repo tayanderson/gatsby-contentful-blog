@@ -62,7 +62,7 @@ body {
 
   ol {
     li {
-      @apply list-decimal list-inside leading-tight;
+      @apply list-decimal list-inside leading-relaxed;
       &:last-child {@apply m-0;}
     }
   }
