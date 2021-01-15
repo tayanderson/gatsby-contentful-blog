@@ -129,9 +129,7 @@ module.exports = {
     {
     resolve: `gatsby-source-instagram`,
       options: {
-        username: `thedrinkdesigner`,
-        access_token: "IGQVJYeERyZAHZAZAckdoY28wRk9VOGRueFV6OEc5c0Jicm5xS2FlT3hrUzMtc0xHdVl3YWRSeDRiQWRCNDVLWDVWMG9vYTJncmVCZAzlfWDVtMl9ibW1YNWxOVV93SEZABdXpPOUhPaWlHcDJsLW9Xa1h1SwZDZD",
-        instagram_id: "575829522839574",
+        username: `575829522839574`,
       },
     },
     `gatsby-plugin-sharp`,
