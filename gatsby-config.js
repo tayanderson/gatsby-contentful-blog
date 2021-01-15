@@ -134,12 +134,6 @@ module.exports = {
         instagram_id: "575829522839574",
       },
     },
-    {
-    resolve: `gatsby-source-instagram-all`,
-      options: {
-        access_token: "IGQVJYeERyZAHZAZAckdoY28wRk9VOGRueFV6OEc5c0Jicm5xS2FlT3hrUzMtc0xHdVl3YWRSeDRiQWRCNDVLWDVWMG9vYTJncmVCZAzlfWDVtMl9ibW1YNWxOVV93SEZABdXpPOUhPaWlHcDJsLW9Xa1h1SwZDZD",
-      },
-    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`
   ],
