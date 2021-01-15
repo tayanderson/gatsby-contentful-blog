@@ -17,7 +17,7 @@ const Index = ({ data, pageContext }) => {
   const articles = data.articles.edges
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
-  const instaPosts = data.insta.edges
+  // const instaPosts = data.insta.edges
 
   const breakpointCols = {
     default: 3,
@@ -48,10 +48,12 @@ const Index = ({ data, pageContext }) => {
           {/*<Link to="/articles" className="font-body font-semibold text-center lowercase underline text-2xl block hover:text-primary">View More</Link>*/}
         </Container>
       </div>
-      <Container>
-        <h2 className="font-heading text-3xl font-semibold mt-12 mb-6"><a href="https://www.instagram.com/thedrinkdesigner/" className="hover:text-primary">On the &apos;Gram</a></h2>
-        <InstaGrid posts={instaPosts} />
-      </Container>
+      {/*
+        <Container>
+          <h2 className="font-heading text-3xl font-semibold mt-12 mb-6"><a href="https://www.instagram.com/thedrinkdesigner/" className="hover:text-primary">On the &apos;Gram</a></h2>
+          <InstaGrid posts={instaPosts} />
+        </Container>
+      */}
     </Layout>
   )
 }
@@ -150,23 +152,6 @@ export const query = graphql`
               excerpt
             }
           }
-        }
-      }
-    }
-    insta: allInstaNode(
-      sort: {fields: timestamp, order: DESC}
-      limit: 6
-    ) {
-      edges {
-        node {
-          localFile {
-            childImageSharp {
-              fluid (maxWidth:600){
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-          id
         }
       }
     }
