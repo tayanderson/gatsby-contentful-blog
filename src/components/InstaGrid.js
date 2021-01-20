@@ -38,7 +38,7 @@ const InstaGrid = ({posts}) => {
         <GridItem className="mb-12 insta-grid-item relative">
           <a href={`https://www.instagram.com/p/${post.id}`}>
             <Img
-              fluid={post.localFile.childImageSharp.fluid}
+              fluid={post.localImage.childImageSharp.fluid}
             />
           </a>
         </GridItem>

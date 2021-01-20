@@ -1,4 +1,9 @@
 const config = require('./src/utils/siteConfig')
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 let contentfulConfig
 
 
@@ -127,6 +132,11 @@ module.exports = {
         }
       },
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token: process.env.INSTAGRAM_TOKEN }
+    },
   ],
 }
