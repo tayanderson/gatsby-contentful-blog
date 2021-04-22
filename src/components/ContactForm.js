@@ -148,7 +148,7 @@ class ContactForm extends React.Component {
         onClick={this.closeModal}
         className="max-w-centered my-0 mx-auto flex flex-wrap justify-between items-start font-body"
       >
-        <input type="hidden" name="form-name" value="contact" className="bg-pink text-primary border-2 p-2"/>
+        <input type="hidden" name="form-name" value="contact" className="bg-gray-200 text-primary border-2 p-2"/>
         <p hidden>
           <label>
             Don’t fill this out:{' '}
@@ -163,7 +163,7 @@ class ContactForm extends React.Component {
           value={this.state.name}
           onChange={this.handleInputChange}
           required
-          className="mb-3 w-full bg-pink"
+          className="mb-3 w-full bg-gray-200"
         />
       <input
           name="email"
@@ -172,7 +172,7 @@ class ContactForm extends React.Component {
           value={this.state.email}
           onChange={this.handleInputChange}
           required
-          className="mb-3 w-full bg-pink"
+          className="mb-3 w-full bg-gray-200"
         />
       <Message
           name="message"
@@ -181,7 +181,7 @@ class ContactForm extends React.Component {
           value={this.state.message}
           onChange={this.handleInputChange}
           required
-          className="w-full mb-10 leading-relaxed resize-y bg-pink"
+          className="w-full mb-10 leading-relaxed resize-y bg-gray-200"
         />
       <Submit name="submit" type="submit" value="Send Message" className="bg-transparent text-primary border-2 border-primary cursor-pointer my-0 mx-auto hover:bg-primary hover:text-white"/>
 

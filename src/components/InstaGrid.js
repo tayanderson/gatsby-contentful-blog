@@ -36,7 +36,7 @@ const InstaGrid = ({posts}) => {
       columnClassName="pl-12">
       {posts.map(({ node: post }) => (
         <GridItem className="mb-12 insta-grid-item relative">
-          <a href={`https://www.instagram.com/p/${post.id}`}>
+          <a href={post.permalink}>
             <Img
               fluid={post.localImage.childImageSharp.fluid}
             />
