@@ -37,7 +37,7 @@ const Index = ({ data, pageContext }) => {
 
       <FeaturedHero title={featuredPost.title} image={featuredPost.heroImage} {...featuredPost} />
       <Container>
-          <h2 className="font-heading text-3xl font-semibold mt-8 mb-6">Lastest Cocktails</h2>
+          <h2 className="font-heading text-3xl font-semibold mt-8 mb-6">Latest Cocktails</h2>
           <MasonryGrid posts={posts} />
           {/*<Link to="/cocktails" className="font-body font-semibold text-center lowercase underline text-2xl block hover:text-primary">View More</Link>*/}
       </Container>
