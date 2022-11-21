@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { FaInstagram } from 'react-icons/fa';
 import siteLogo from '../images/logo1.png';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import config from '../utils/siteConfig'
 import Headroom from 'react-headroom';
 
@@ -48,10 +47,10 @@ function Navbar() {
               route: `/about`,
               title: `About`
             },
-            {
-              route: `/services`,
-              title: `Services`
-            },
+            // {
+            //   route: `/services`,
+            //   title: `Services`
+            // },
             {
               route: `/contact`,
               title: `Contact`

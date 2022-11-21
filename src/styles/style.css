@@ -36,6 +36,7 @@ body {
   a {
     transition: 0.2s;
     &:hover {@apply text-primary;}
+    @apply underline;
   }
 
   del {
